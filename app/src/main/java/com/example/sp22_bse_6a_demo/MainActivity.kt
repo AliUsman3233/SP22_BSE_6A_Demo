@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        print("I am Android")
 
         add(num2 = 70, num1 =  40)
         dispaly(name = "ALi", num =  20)
