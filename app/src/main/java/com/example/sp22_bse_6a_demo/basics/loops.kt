@@ -1,5 +1,10 @@
 package com.example.sp22_bse_6a_demo.basics
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.switchMap
+import com.example.sp22_bse_6a_demo.models.Person
+
 fun main() {
 
 //    var i: Int = 0
@@ -20,7 +25,7 @@ fun main() {
 //        }
 //    }
 
-    filterData()
+//    filterData()
 
 //    personList.forEach {person ->
 //        println("current person fname -> ${person.name.firstName}")
@@ -43,18 +48,31 @@ fun main() {
 //    list.add(Person(Name("A","B","C"), age = 20, email = "abc@gmail.com"))
 //    list.add(Person(Name("A","B","C"), age = 20, email = "abc@gmail.com"))
 //    list.add(Person(Name("A","B","C"), age = 20, email = "abc@gmail.com"))
-//
+
 //    print("lists = ${list.get(0)}")
+
+
+    // Mapping
+
+    val personList = arrayListOf(Person(Name("Ali", "", "Usman"), 29, "ali@gmail.com"),
+        Person(Name("Maowiz", "", "Saleem"), 21, "Maowiz@gmail.com"),
+        Person(Name("Umar", "", "Draz"), 20, "umar@gmail.com")
+    )
+
+//    val names = getPersonsName(personsList = personList)
+    println("Names  = ${Person().getPersonsName(personsList = personList)}")
 }
 
 fun filterData(){
     val personList = arrayListOf(Person(Name("Ali", "", "Usman"), 29, "ali@gmail.com"),
         Person(Name("Maowiz", "", "Saleem"), 21, "Maowiz@gmail.com"),
-        Person(Name("Umar", "", "Draz"), 20, "umar@gmail.com"))
+        Person(Name("Umar", "", "Draz"), 20, "umar@gmail.com")
+    )
 
     val filteredData = personList.filter {
-        it.age <= 21 && it.name.firstName.contains("o")
+        (it.age?:0) <= 21 && it.name?.firstName?.contains("o")?:false
     }
 
     println("filteredData -> $filteredData")
 }
+

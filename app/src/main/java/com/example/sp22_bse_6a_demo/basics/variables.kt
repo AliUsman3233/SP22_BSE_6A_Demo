@@ -1,5 +1,7 @@
 package com.example.sp22_bse_6a_demo.basics
 
+import com.example.sp22_bse_6a_demo.models.Person
+
 
 fun main() {
     val PI = 3.14
@@ -17,16 +19,6 @@ fun main() {
     println("Name of person  = ${p.toString()}")
 }
 
-
-data class Person(
-    var name: Name,
-    var age: Int,
-    var email: String
-) {
-    override fun toString(): String {
-        return "Person(nam=$name, age=$age, email=$email)\n"
-    }
-}
 
 data class Name(
     var firstName: String,
