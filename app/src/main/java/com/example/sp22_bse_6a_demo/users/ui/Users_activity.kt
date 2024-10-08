@@ -36,6 +36,7 @@ class users_activity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this@users_activity,R.layout.activity_users)
 
         userAdopter.submitList(userList)
+        binding.userRV.adapter = userAdopter
         binding.userRV.layoutManager = LinearLayoutManager(this)
 
     }
