@@ -74,5 +74,7 @@ fun filterData(){
     }
 
     println("filteredData -> $filteredData")
+
+    val age: String = "${20}";
 }
 
