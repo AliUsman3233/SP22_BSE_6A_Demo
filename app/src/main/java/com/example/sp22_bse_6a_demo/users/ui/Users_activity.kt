@@ -16,7 +16,7 @@ import com.example.sp22_bse_6a_demo.users.model.User
 class users_activity : AppCompatActivity() {
 
     lateinit var binding: ActivityUsersBinding
-    var userAdopter: UserAdopter =  UserAdopter(UserAdopter.diffCallBack)
+    val userAdopter: UserAdopter =  UserAdopter(UserAdopter.diffCallBack)
 
     val userList: List<User> = arrayListOf(
         User("Maowiz", 21),
