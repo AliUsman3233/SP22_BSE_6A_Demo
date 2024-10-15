@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sp22_bse_6a_demo.R
-import com.example.sp22_bse_6a_demo.databinding.UserRowBinding
+import com.example.sp22_bse_6a_demo.databinding.FemaleUserRowBinding
+import com.example.sp22_bse_6a_demo.databinding.MaleUserRowBinding
 import com.example.sp22_bse_6a_demo.users.model.Gender
 import com.example.sp22_bse_6a_demo.users.model.User
 
@@ -18,22 +19,56 @@ class UserAdopter(
     var maleNameClickCallBack: (String) -> Unit,
     var feMaleNameClickCallBack: (String) -> Unit
 ) :
-    ListAdapter<User, UserAdopter.UserViewHolder>(diffCallback) {
+    ListAdapter<User, RecyclerView.ViewHolder>(diffCallback) {
     private val tag = this@UserAdopter.javaClass.name
 
-    class UserViewHolder(var binding: UserRowBinding, var ctx: Context) :
+    class MaleUserViewHolder(var binding: MaleUserRowBinding, var ctx: Context) :
         RecyclerView.ViewHolder(binding.root) {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val binding = UserRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UserViewHolder(binding = binding, ctx = parent.context)
+    class FeMaleUserViewHolder(var binding: FemaleUserRowBinding, var ctx: Context) :
+        RecyclerView.ViewHolder(binding.root) {}
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if(viewType == 0) {
+            val binding =
+                MaleUserRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return MaleUserViewHolder(binding = binding, ctx = parent.context)
+        } else {
+            val binding =
+                FemaleUserRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return FeMaleUserViewHolder(binding = binding, ctx = parent.context)
+        }
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position).gender) {
+            Gender.MALE -> {
+                0
+            }
+
+            Gender.FEMALE -> {
+                1
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val dataItem = getItem(position)
-        holder.binding.user = dataItem
-        holder.binding.userRowName.setTextColor(holder.ctx.resources.getColor(if (dataItem.gender == Gender.MALE) R.color.Green else R.color.red))
-        holder.binding.userRowAge.setTextColor(holder.ctx.resources.getColor(if (dataItem.gender == Gender.MALE) R.color.Green else R.color.red))
+        when (dataItem.gender) {
+            Gender.MALE -> {
+                (holder as MaleUserViewHolder).binding.user = dataItem
+            }
+
+            Gender.FEMALE -> {
+                (holder as FeMaleUserViewHolder).binding.user = dataItem
+            }
+        }
+
+
+//        holder.binding.user = dataItem
+//        holder.binding.userRowName.setTextColor(holder.ctx.resources.getColor(if (dataItem.gender == Gender.MALE) R.color.Green else R.color.red))
+//        holder.binding.userRowAge.setTextColor(holder.ctx.resources.getColor(if (dataItem.gender == Gender.MALE) R.color.Green else R.color.red))
 
 //        if(dataItem.gender == Gender.MALE) {
 //            holder.binding.userRowName.setTextColor(holder.ctx.resources.getColor(R.color.Green))
@@ -41,17 +76,17 @@ class UserAdopter(
 //            holder.binding.userRowName.setTextColor(holder.ctx.resources.getColor(R.color.red))
 //        }
 
-        holder.binding.root.setOnClickListener {
-            Toast.makeText(holder.ctx, "Row (${position + 1}) clicked", Toast.LENGTH_SHORT).show()
-        }
-
-        holder.binding.userRowName.setOnClickListener {
-            if (dataItem.gender == Gender.MALE)
-                maleNameClickCallBack.invoke(dataItem.name ?: "Unknown")
-            else
-                feMaleNameClickCallBack.invoke(dataItem.name ?: "Unknown")
-            //   Toast.makeText(holder.ctx, "User just clicked on ${dataItem.name}", Toast.LENGTH_SHORT).show()
-        }
+//        holder.binding.root.setOnClickListener {
+//            Toast.makeText(holder.ctx, "Row (${position + 1}) clicked", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        holder.binding.userRowName.setOnClickListener {
+//            if (dataItem.gender == Gender.MALE)
+//                maleNameClickCallBack.invoke(dataItem.name ?: "Unknown")
+//            else
+//                feMaleNameClickCallBack.invoke(dataItem.name ?: "Unknown")
+//            //   Toast.makeText(holder.ctx, "User just clicked on ${dataItem.name}", Toast.LENGTH_SHORT).show()
+//        }
 
 //        val nameTV = holder.itemView.findViewById<TextView>(R.id.user_row_name)
 //        val ageTV = holder.itemView.findViewById<TextView>(R.id.user_row_age)

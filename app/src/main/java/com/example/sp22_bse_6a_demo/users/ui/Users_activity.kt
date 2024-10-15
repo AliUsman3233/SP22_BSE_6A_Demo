@@ -14,20 +14,33 @@ import com.example.sp22_bse_6a_demo.databinding.ActivityUsersBinding
 import com.example.sp22_bse_6a_demo.users.adopter.UserAdopter
 import com.example.sp22_bse_6a_demo.users.model.Gender
 import com.example.sp22_bse_6a_demo.users.model.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class users_activity : AppCompatActivity() {
 
     lateinit var binding: ActivityUsersBinding
     val userAdopter: UserAdopter =
         UserAdopter(UserAdopter.diffCallBack, maleNameClickCallBack = { name ->
-            Toast.makeText(this@users_activity, "(Male) User just clicked on $name", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                this@users_activity,
+                "(Male) User just clicked on $name",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }, feMaleNameClickCallBack = { name ->
-            Toast.makeText(this@users_activity, "(Female) User just clicked on $name", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                this@users_activity,
+                "(Female) User just clicked on $name",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         })
 
-    val userList: List<User> = arrayListOf(
+    var userList: List<User> = arrayListOf(
         User("Maowiz", 21, Gender.MALE),
         User("Umar", 21, Gender.MALE),
         User("Mehwish Hayat", 50, Gender.FEMALE),
@@ -51,6 +64,17 @@ class users_activity : AppCompatActivity() {
         userAdopter.submitList(userList)
         binding.userRV.adapter = userAdopter
         binding.userRV.layoutManager = LinearLayoutManager(this)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            delay(10000)
+            userList = userList.map { user: User ->
+                user.copy(name = user.name?.split(" ")?.get(0),)
+            }
+            userAdopter.submitList(userList)
+            withContext(Dispatchers.Main) {
+                userAdopter.notifyDataSetChanged()
+            }
+        }
 
     }
 }

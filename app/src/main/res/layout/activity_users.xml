@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/user_row" />
+            tools:listitem="@layout/male_user_row" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
