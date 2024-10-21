@@ -13,14 +13,17 @@
         android:theme="@style/Theme.SP22_BSE_6A_Demo"
         tools:targetApi="31">
 <!--        <activity-->
-<!--            android:name=".users.ui.users_activity"-->
+<!--            android:name=".lecture.ui.LecturesActivity"-->
 <!--            android:exported="false" />-->
+        <!-- <activity -->
+        <!-- android:name=".users.ui.users_activity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".second_activity.ui.SecondActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".users.ui.users_activity"
+            android:name=".lecture.ui.LecturesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

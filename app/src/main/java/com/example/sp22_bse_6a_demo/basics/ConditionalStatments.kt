@@ -28,22 +28,22 @@ fun main() {
 //            cout<<"Not batched"<<endl;
 //    }
 
-//    val age = 50;
+    val age = 50;
 //
-//    when (age) {
-//        in 1..9 -> {
-//            print("You are a choota bacha")
-//        }
-//        2 -> {
-//            print("You are a darmiyana bacha")
-//        }
-//        10 -> {
-//            print("You are of age 10")
-//        }
-//        else -> {
-//            print("You are unknown kind of person")
-//        }
-//    }
+    when (age) {
+        in 1..9 -> {
+            print("You are a choota bacha")
+        }
+        2 -> {
+            print("You are a darmiyana bacha")
+        }
+        10 -> {
+            print("You are of age 10")
+        }
+        else -> {
+            print("You are unknown kind of person")
+        }
+    }
 
     val user = User(name = "Ali Usman", userType = UserType.SuperAdmin)
 

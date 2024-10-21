@@ -50,7 +50,11 @@ class UserAdopter(
             Gender.FEMALE -> {
                 1
             }
+            else -> {
+                -1
+            }
         }
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

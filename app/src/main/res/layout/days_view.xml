@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="timetableModel"
+            type="com.example.sp22_bse_6a_demo.lecture.model.TimeTableModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="5dp"
+        app:cardBackgroundColor="#E7E7E7">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/dayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{timetableModel.day}"
+                tools:text="Mon" />
+
+            <TextView
+                android:id="@+id/lecturesTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{timetableModel.numberOfLectures + ``}"
+                app:layout_constraintTop_toBottomOf="@+id/dayTV"
+                tools:text="2" />
+
+
+            <View
+                android:id="@+id/lecture1View"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/Green"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                app:layout_constraintEnd_toStartOf="@id/lecture2View"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecturesTV" />
+
+            <View
+                android:id="@+id/lecture2View"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="2dp"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="#3F51B5"
+                app:layout_constraintEnd_toStartOf="@+id/lecture3View"
+                app:layout_constraintStart_toEndOf="@id/lecture1View"
+                app:layout_constraintTop_toBottomOf="@+id/lecturesTV" />
+
+            <View
+                android:id="@+id/lecture3View"
+                android:layout_width="10dp"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:layout_height="10dp"
+                android:background="@drawable/shape_circle"
+                app:layout_constraintEnd_toStartOf="@+id/lecture4View"
+                android:backgroundTint="#FF5722"
+                app:layout_constraintStart_toEndOf="@id/lecture2View"
+                app:layout_constraintTop_toBottomOf="@+id/lecturesTV" />
+
+            <View
+                android:id="@+id/lecture4View"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/shape_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lecture3View"
+                app:layout_constraintTop_toBottomOf="@+id/lecturesTV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
