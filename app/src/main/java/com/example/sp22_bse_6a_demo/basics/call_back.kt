@@ -19,6 +19,20 @@ fun main() {
     }
 }
 
+data class Person (
+    val name: String,
+    val age: Int,
+    val email: String,
+    val skils: List<Skill>
+) {
+
+}
+
+data class Skill (
+    val tag:String,
+    val level: Int
+)
+
 
 enum class State {
     STARTED,
