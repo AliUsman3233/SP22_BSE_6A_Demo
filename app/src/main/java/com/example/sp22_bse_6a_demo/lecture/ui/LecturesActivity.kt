@@ -1,11 +1,7 @@
 package com.example.sp22_bse_6a_demo.lecture.ui
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +9,6 @@ import com.example.sp22_bse_6a_demo.R
 import com.example.sp22_bse_6a_demo.databinding.ActivityLecturesBinding
 import com.example.sp22_bse_6a_demo.lecture.adopter.TimeTableAdopter
 import com.example.sp22_bse_6a_demo.lecture.model.TimeTableModel
-import com.example.sp22_bse_6a_demo.users.adopter.UserAdopter
-import com.example.sp22_bse_6a_demo.users.model.Gender
-import com.example.sp22_bse_6a_demo.users.model.User
 
 class LecturesActivity : AppCompatActivity() {
     lateinit var binding: ActivityLecturesBinding
