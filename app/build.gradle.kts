@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.safeArgs)
-    alias(libs.plugins.kept)
+//    alias(libs.plugins.kept)
 }
 
 android {
@@ -20,9 +20,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    kapt {
-        correctErrorTypes = true
-    }
+//    kapt {
+//        correctErrorTypes = true
+//    }
 
     viewBinding {
         enable = true
