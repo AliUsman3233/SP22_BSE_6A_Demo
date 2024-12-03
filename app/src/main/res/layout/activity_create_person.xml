@@ -25,11 +25,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="0"
+            android:text="@{personViewModel.counterUiModel.count}"
             android:textStyle="bold"
             android:textSize="30sp"
             android:layout_marginTop="100dp"
             />
-<!--        android:text="@{personViewModel.counterAsStringLD}"-->
 
         <Button
             android:layout_width="wrap_content"

@@ -41,16 +41,16 @@ class CreateUserActivity : AppCompatActivity() {
 
         // Corotines
 
-        var count = 0;
-        lifecycleScope.launch(Dispatchers.IO) {
-            while (true) {
-                delay(100)
-                withContext(Dispatchers.Main) {
-                    binding.counterTV.text = "$count"
-                }
-                count = count + 1
-            }
-        }
+//        var count = 0;
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            while (true) {
+//                delay(100)
+//                withContext(Dispatchers.Main) {
+//                    binding.counterTV.text = "$count"
+//                }
+//                count = count + 1
+//            }
+//        }
 
 
 //        db = Room.databaseBuilder(
@@ -79,9 +79,9 @@ class CreateUserActivity : AppCompatActivity() {
             Log.e("CreateUserActivity", "onCreate: personModel = ${newPerson}")
         }
 
-//        personViewModel.counterLD.observe(this@CreateUserActivity) { count ->
+        personViewModel.counterLD.observe(this@CreateUserActivity) { count ->
 //            binding.counterTV.text = "$count"
-//        }
+        }
 
 //        GlobalScope.launch(Dispatchers.IO) {
 //            while (true) {

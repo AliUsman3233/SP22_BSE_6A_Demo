@@ -1,12 +1,14 @@
 package com.example.sp22_bse_6a_demo.person.viewmodel
 
 import android.util.Log
+import android.view.animation.Transformation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.sp22_bse_6a_demo.person.model.PersonModel
+import com.example.sp22_bse_6a_demo.person.ui_model.CounterUiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,9 +20,11 @@ class PersonViewModel : ViewModel() {  // MMVM Android Kotlin
 
     val counterLD: LiveData<Int> = counterMLD
 
-    val counterAsStringLD: LiveData<String> = counterLD.map { it ->
-        it.toString()
+    val counterUiModel: LiveData<CounterUiModel> = counterLD.map { currentValue ->
+        CounterUiModel(count = currentValue.toString())
     }
+
+
 
     private val speedMLD: MutableLiveData<Long> = MutableLiveData(500)
 
@@ -29,7 +33,6 @@ class PersonViewModel : ViewModel() {  // MMVM Android Kotlin
         viewModelScope.launch(Dispatchers.IO) {
             while (true) {
                 delay((speedMLD.value?:10))
-
                 counterMLD.postValue((counterMLD.value ?: 0) + 1)
             }
         }
@@ -58,6 +61,7 @@ class PersonViewModel : ViewModel() {  // MMVM Android Kotlin
     fun fastSpeed() {
         speedMLD.value = (speedMLD.value?:0) - 100
     }
+
 
 
 }
