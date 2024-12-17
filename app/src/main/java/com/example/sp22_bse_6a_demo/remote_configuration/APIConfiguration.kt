@@ -11,19 +11,17 @@ class APIConfiguration {
         var retrofit: Retrofit? = null
         val baseUrl = "https://www.freetestapi.com"
         fun getClient(): Retrofit? {
-            val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor()
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+            if(retrofit == null) {
+                val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor()
+                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+                val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
-
-            retrofit = Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-
-
-
+                retrofit = Retrofit.Builder()
+                    .baseUrl(baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build()
+            }
             return retrofit
         }
     }

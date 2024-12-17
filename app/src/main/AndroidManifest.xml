@@ -26,7 +26,7 @@
         </activity>
 
         <activity
-            android:name=".person.ui.CreateUserActivity"
+            android:name=".api_tests.ui.CatsActivity"
             android:exported="true">
 
             <intent-filter>

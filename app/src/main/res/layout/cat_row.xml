@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Declare the variable for binding the data -->
+        <variable
+            name="cat"
+            type="com.example.sp22_bse_6a_demo.api_tests.models.CatFactModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Image View for the Cat's Image -->
+        <ImageView
+            android:id="@+id/imageViewCat"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@{cat.image}" />
+
+        <!-- Text Layout for the Cat's Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewCat"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="16dp">
+
+            <!-- Cat's Name -->
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cat.name}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Cat's Origin -->
+            <TextView
+                android:id="@+id/textViewOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cat.origin}"
+                android:textSize="14sp"
+                android:textColor="#757575" />
+
+            <!-- Cat's Temperament -->
+            <TextView
+                android:id="@+id/textViewTemperament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cat.temperament}"
+                android:textSize="14sp"
+                android:textColor="#757575" />
+
+            <!-- Cat's Description -->
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cat.description}"
+                android:textSize="12sp"
+                android:textColor="#757575" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

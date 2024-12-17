@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -111,6 +110,21 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.4.1")
 //    implementation("com.squareup.okhttp3:okhttps:3.4.1")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+
+//    implementation("com.google.firebase:firebase-messaging:23.0.0")
+//    implementation("com.google.firebase:firebase-auth:21.0.1")
+//    implementation("com.google.firebase:firebase-database-ktx:20.0.3")
+//    implementation("com.google.firebase:firebase-storage-ktx:20.0.0")
+//    implementation("com.google.firebase:firebase-firestore:21.4.0")
+//    implementation("androidx.recyclerview:recyclerview:1.2.0")
+
+//    implementation("com.firebaseui:firebase-ui-database:5.0.0'
+    //Firebase crashlytics
+//    implementation platform("com.google.firebase:firebase-bom:29.0.3")
+//    implementation("com.google.android.gms:play-services-vision:20.1.3")
+//    implementation("com.google.firebase:firebase-core:18.0.3")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -120,5 +134,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 }

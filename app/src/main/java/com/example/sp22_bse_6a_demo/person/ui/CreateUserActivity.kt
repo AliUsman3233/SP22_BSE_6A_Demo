@@ -30,34 +30,28 @@ class CreateUserActivity : AppCompatActivity() {
     var db: Sp22Database? = null
     var personDao: PersonDao? = null
     private val personViewModel: PersonViewModel by viewModels()
-    var apiInterface: ApiInterface? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding =
             DataBindingUtil.setContentView(this@CreateUserActivity, R.layout.activity_create_person)
 
-        apiInterface = APIConfiguration.getClient()?.create(ApiInterface::class.java)
 
+//            object : Callback<List<CatFactModel>?>
+//             {
+//            override fun onResponse(
+//                call: Call<List<CatFactModel>?>?,
+//                response: Response<List<CatFactModel>?>
+//            ) {
+//                Log.d("TAG", response.code().toString())
+//                Log.d("TAG", response.body().toString())
+//            }
+//
+//            override fun onFailure(call: Call<List<CatFactModel>?>, t: Throwable?) {
+//                call.cancel()
+//            }
+//        }
 
-        /**
-         * GET List Resources
-         */
-        val call: Call<List<CatFactModel>?>? = apiInterface?.getCatsData()
-        call?.enqueue(object : Callback<List<CatFactModel>?>
-             {
-            override fun onResponse(
-                call: Call<List<CatFactModel>?>?,
-                response: Response<List<CatFactModel>?>
-            ) {
-                Log.d("TAG", response.code().toString())
-                Log.d("TAG", response.body().toString())
-            }
-
-            override fun onFailure(call: Call<List<CatFactModel>?>, t: Throwable?) {
-                call.cancel()
-            }
-        })
 
 
         // Corotines
