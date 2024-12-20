@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88610918932",
+    "project_id": "sp22-bse-6a-demo",
+    "storage_bucket": "sp22-bse-6a-demo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88610918932:android:884cb4afa28dd55bac0d01",
+        "android_client_info": {
+          "package_name": "com.example.sp22_bse_6a_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGAmIjGFTJ-K6-YUnDnm2BIXI5ANupJoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

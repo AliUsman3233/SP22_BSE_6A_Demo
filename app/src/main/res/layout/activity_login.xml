@@ -4,12 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.example.sp22_bse_6a_demo.person.viewmodel.LoginViewModel" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".login.LoginActivity">
+        tools:context=".login.ui.LoginActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,6 +76,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:hint="Enter your username"
+                android:text="@={loginViewModel.loginModelMLD.userName}"
                 android:drawableStart="@drawable/baseline_person_24" />
 
 
@@ -92,6 +100,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:hint="@string/email_hint"
+                android:text="@={loginViewModel.loginModelMLD.email}"
                 android:drawableStart="@drawable/baseline_email_24" />
 
             <TextView
@@ -116,6 +125,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:hint=" Enter your password"
+                android:text="@={loginViewModel.loginModelMLD.password}"
                 android:drawableStart="@drawable/baseline_key_24" />
 
 
@@ -125,6 +135,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:text="Login"
+                android:onClick="@{()->loginViewModel.login()}"
                 app:layout_constraintTop_toBottomOf="@id/passwordET"
                 app:layout_constraintStart_toStartOf="@id/passwordET"
                 app:layout_constraintEnd_toEndOf="@id/passwordET" />
@@ -135,6 +146,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:onClick="@{()->loginViewModel.signUp()}"
                 app:layout_constraintTop_toBottomOf="@id/login_btn"
                 app:layout_constraintStart_toStartOf="@id/passwordET"
                 app:layout_constraintEnd_toEndOf="@id/passwordET"

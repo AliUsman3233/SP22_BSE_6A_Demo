@@ -26,7 +26,7 @@
         </activity>
 
         <activity
-            android:name=".api_tests.ui.CatsActivity"
+            android:name=".second_activity.ui.SecondActivity"
             android:exported="true">
 
             <intent-filter>
@@ -42,9 +42,9 @@
         <!-- <activity -->
         <!-- android:name=".users.ui.users_activity" -->
         <!-- android:exported="false" /> -->
-        <activity
-            android:name=".second_activity.ui.SecondActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".second_activity.ui.SecondActivity"-->
+<!--            android:exported="true" />-->
         <activity android:name=".MainActivity" />
         <activity
             android:name=".lecture.ui.LecturesActivity"

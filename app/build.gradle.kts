@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.safeArgs)
+    alias(libs.plugins.googleGmsGoogleServices)
 //    alias(libs.plugins.kept)
 }
 
@@ -52,6 +53,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     val nav_version = "2.8.3"
 
     // Jetpack Compose integration
