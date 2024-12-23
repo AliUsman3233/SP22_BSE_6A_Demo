@@ -1,9 +1,12 @@
+val daggerVersion = "2.44"
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.safeArgs)
     alias(libs.plugins.googleGmsGoogleServices)
-//    alias(libs.plugins.kept)
+    id("com.google.dagger.hilt.android")
+    id ("com.google.devtools.ksp")
+//    id("dagger.hilt.android.plugin") version daggerVersion
 }
 
 android {
@@ -116,7 +119,14 @@ dependencies {
 //    implementation("com.squareup.okhttp3:okhttps:3.4.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+//    implementation(libs.hilt.android)
+//    ksp(libs.hilt.compiler)
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    ksp("com.google.dagger:dagger-compiler:2.48.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
+//    implementation ("com.google.dagger:hilt-android:2.44") // Hilt dependency
+//    kapt ("com.google.dagger:hilt-compiler:2.44") // Hilt compiler for annotation processing
 //    implementation("com.google.firebase:firebase-messaging:23.0.0")
 //    implementation("com.google.firebase:firebase-auth:21.0.1")
 //    implementation("com.google.firebase:firebase-database-ktx:20.0.3")

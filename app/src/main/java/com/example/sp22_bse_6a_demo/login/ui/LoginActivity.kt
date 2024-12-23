@@ -11,7 +11,9 @@ import com.example.sp22_bse_6a_demo.R
 import com.example.sp22_bse_6a_demo.databinding.ActivityLoginBinding
 import com.example.sp22_bse_6a_demo.person.viewmodel.LoginViewModel
 import com.example.sp22_bse_6a_demo.person.viewmodel.PersonViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
