@@ -18,13 +18,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    val tag = this@LoginActivity.javaClass.name
+//    val tag = this@LoginActivity.javaClass.name
 
-    companion object {
-        val userName = "UserName"
-        val email = "Email"
-        val passoword = "Password"
-    }
+//    companion object {
+//        val userName = "UserName"
+//        val email = "Email"
+//        val passoword = "Password"
+//    }
     private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

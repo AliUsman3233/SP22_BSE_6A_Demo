@@ -4,8 +4,8 @@ import com.example.sp22_bse_6a_demo.login.model.LoginModel
 
 interface AuthRepository {
 
-    fun login(loginModel: LoginModel): AuthResponse
-    fun signup(loginModel: LoginModel): AuthResponse
+    suspend fun login(loginModel: LoginModel): AuthResponse
+    suspend fun signup(loginModel: LoginModel): AuthResponse
 //    fun storeUserData(loginModel: LoginModel)
 }
 
