@@ -1,9 +1,12 @@
 package com.example.sp22_bse_6a_demo.login.repository
 
+import com.example.sp22_bse_6a_demo.login.model.LoginModel
+
 interface AuthRepository {
 
-    fun login(email: String, password: String): AuthResponse
-    fun signup(email: String, password: String): AuthResponse
+    fun login(loginModel: LoginModel): AuthResponse
+    fun signup(loginModel: LoginModel): AuthResponse
+//    fun storeUserData(loginModel: LoginModel)
 }
 
 

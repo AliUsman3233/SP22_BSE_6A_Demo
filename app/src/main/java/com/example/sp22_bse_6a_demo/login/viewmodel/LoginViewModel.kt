@@ -24,42 +24,44 @@ class LoginViewModel @Inject constructor(
 
     val loginModelMLD: MutableLiveData<LoginModel> = MutableLiveData(LoginModel(userName = "Anwar", email= "anwar@gmail.com", password = "654321"))
 
-    val firebaseAuth:FirebaseAuth = FirebaseAuth.getInstance()
-    val fireStoreDb = Firebase.firestore
-    var context: Context? = null
+//    val firebaseAuth:FirebaseAuth = FirebaseAuth.getInstance()
+//    val fireStoreDb = Firebase.firestore
+//    var context: Context? = null
 
-    fun initContext(context: Context) {
-        this@LoginViewModel.context = context;
-    }
+//    fun initContext(context: Context) {
+//        this@LoginViewModel.context = context;
+//    }
     fun login() {
-        Log.e("LoginViewModel", "login: loginModelMLD -> ${loginModelMLD.value}", )
-        firebaseAuth.signInWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener { successState->
-            Log.e("LoginViewModel", "login state: Successful", )
-            Toast.makeText(context, successState.user?.email + " Logged in successfully",Toast.LENGTH_LONG).show()
-
-        }.addOnFailureListener { failedState ->
-            Log.e("LoginViewModel", "login state: Failed", )
-            Log.e("LoginViewModel", "login state message: Failed ${failedState.message}", )
-            Toast.makeText(context, failedState.message,Toast.LENGTH_LONG).show()
-        }
+        authRepository.login(loginModelMLD.value?:LoginModel())
+//        Log.e("LoginViewModel", "login: loginModelMLD -> ${loginModelMLD.value}", )
+//        firebaseAuth.signInWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener { successState->
+//            Log.e("LoginViewModel", "login state: Successful", )
+//            Toast.makeText(context, successState.user?.email + " Logged in successfully",Toast.LENGTH_LONG).show()
+//
+//        }.addOnFailureListener { failedState ->
+//            Log.e("LoginViewModel", "login state: Failed", )
+//            Log.e("LoginViewModel", "login state message: Failed ${failedState.message}", )
+//            Toast.makeText(context, failedState.message,Toast.LENGTH_LONG).show()
+//        }
     }
 
     fun signUp() {
-        firebaseAuth.createUserWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener {
-            Toast.makeText(context, "User Created Successfully",Toast.LENGTH_LONG).show()
-            storeUserData()
-        }.addOnFailureListener { result->
-            Toast.makeText(context, result.message,Toast.LENGTH_LONG).show()
-        }
+        authRepository.signup(loginModelMLD.value?:LoginModel())
+//        firebaseAuth.createUserWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener {
+//            Toast.makeText(context, "User Created Successfully",Toast.LENGTH_LONG).show()
+//            storeUserData()
+//        }.addOnFailureListener { result->
+//            Toast.makeText(context, result.message,Toast.LENGTH_LONG).show()
+//        }
     }
 
-    fun storeUserData() {
-        fireStoreDb.collection("users").document(loginModelMLD.value?.email?:"dummy").set(loginModelMLD.value?:LoginModel()).addOnSuccessListener { successState ->
-            Toast.makeText(context, "Data against " + loginModelMLD.value?.email + " is stored successfully",Toast.LENGTH_LONG).show()
-        }.addOnFailureListener { result ->
-            Toast.makeText(context, result.message,Toast.LENGTH_LONG).show()
-        }
-    }
+//    fun storeUserData() {
+//        fireStoreDb.collection("users").document(loginModelMLD.value?.email?:"dummy").set(loginModelMLD.value?:LoginModel()).addOnSuccessListener { successState ->
+//            Toast.makeText(context, "Data against " + loginModelMLD.value?.email + " is stored successfully",Toast.LENGTH_LONG).show()
+//        }.addOnFailureListener { result ->
+//            Toast.makeText(context, result.message,Toast.LENGTH_LONG).show()
+//        }
+//    }
 
 
 

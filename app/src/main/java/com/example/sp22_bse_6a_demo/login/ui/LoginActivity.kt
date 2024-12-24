@@ -31,13 +31,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
-        val authresponseInstance: AuthRepositoryImpl = AuthRepositoryImpl()
-
-        val
-
         binding.loginViewModel = this@LoginActivity.loginViewModel
         binding.lifecycleOwner = this@LoginActivity
-        this@LoginActivity.loginViewModel.initContext(this@LoginActivity)
+//        this@LoginActivity.loginViewModel.initContext(this@LoginActivity)
 //        binding.loginBtn.setOnClickListener {
 //            Log.e(tag, "onCreate: Button clicked -> loginBtn")
 //            Toast.makeText(this@LoginActivity, "Button clicked -> loginBtn", Toast.LENGTH_LONG)
