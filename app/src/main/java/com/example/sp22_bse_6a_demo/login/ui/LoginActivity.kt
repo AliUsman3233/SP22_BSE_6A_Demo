@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.sp22_bse_6a_demo.MainActivity
 import com.example.sp22_bse_6a_demo.R
 import com.example.sp22_bse_6a_demo.databinding.ActivityLoginBinding
+import com.example.sp22_bse_6a_demo.login.repository.AuthRepositoryImpl
 import com.example.sp22_bse_6a_demo.person.viewmodel.LoginViewModel
 import com.example.sp22_bse_6a_demo.person.viewmodel.PersonViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        val authresponseInstance: AuthRepositoryImpl = AuthRepositoryImpl()
+
+        val
 
         binding.loginViewModel = this@LoginActivity.loginViewModel
         binding.lifecycleOwner = this@LoginActivity
