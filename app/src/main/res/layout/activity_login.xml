@@ -8,6 +8,9 @@
         <variable
             name="loginViewModel"
             type="com.example.sp22_bse_6a_demo.person.viewmodel.LoginViewModel" />
+
+        <import
+            type="android.view.View"/>
     </data>
 
 
@@ -57,13 +60,36 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
+                android:id="@+id/responseModelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Response: "
+                android:visibility="@{loginViewModel.loginResponseUiModelMLD.getVisibilityState ? View.VISIBLE: View.GONE, default=gone}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/userNameET"
+                />
+
+            <TextView
+                android:id="@+id/responseModelMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{loginViewModel.loginResponseUiModelMLD.message}"
+                android:visibility="@{loginViewModel.loginResponseUiModelMLD.getVisibilityState ? View.VISIBLE: View.GONE, default=gone}"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/responseModelLabel"
+                app:layout_constraintStart_toStartOf="@id/userNameET"
+                />
+
+
+            <TextView
                 android:id="@+id/userNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UserName"
                 android:textSize="15sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/emailET" />
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/responseModelMessage"
+                app:layout_constraintStart_toStartOf="@+id/userNameET" />
 
             <EditText
                 android:id="@+id/userNameET"

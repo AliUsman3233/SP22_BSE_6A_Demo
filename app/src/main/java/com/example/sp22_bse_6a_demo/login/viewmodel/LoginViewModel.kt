@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sp22_bse_6a_demo.login.model.LoginModel
 import com.example.sp22_bse_6a_demo.login.repository.AuthRepository
+import com.example.sp22_bse_6a_demo.login.repository.AuthResponse
+import com.example.sp22_bse_6a_demo.login.repository.ResponseState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -25,13 +27,18 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {  // MMVM Android Kotlin
 //    val person: PersonModel = PersonModel()
 
-    val loginModelMLD: MutableLiveData<LoginModel> = MutableLiveData(
+    val loginModelMLD: MutableLiveData<LoginModel> = MutableLiveData( // UI Model
         LoginModel(
             userName = "Anwar",
             email = "anwar@gmail.com",
             password = "654321"
         )
     )
+
+    val loginResponseUiModelMLD: MutableLiveData<AuthResponse> = MutableLiveData(
+        AuthResponse(ResponseState.DEFAULT, "")
+    )
+
 
 //    val firebaseAuth:FirebaseAuth = FirebaseAuth.getInstance()
 //    val fireStoreDb = Firebase.firestore
@@ -42,7 +49,9 @@ class LoginViewModel @Inject constructor(
 //    }
     fun login() {
         viewModelScope.launch(Dispatchers.IO) {
-            authRepository.login(loginModelMLD.value ?: LoginModel())
+            authRepository.login(loginModelMLD.value ?: LoginModel(), { response ->
+                loginResponseUiModelMLD.postValue(response)
+            })
         }
 //        Log.e("LoginViewModel", "login: loginModelMLD -> ${loginModelMLD.value}", )
 //        firebaseAuth.signInWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener { successState->
@@ -58,7 +67,9 @@ class LoginViewModel @Inject constructor(
 
     fun signUp() {
         viewModelScope.launch(Dispatchers.IO) {
-            authRepository.signup(loginModelMLD.value ?: LoginModel())
+            authRepository.signup(loginModelMLD.value ?: LoginModel(), { response ->
+                loginResponseUiModelMLD.postValue(response)
+            })
         }
 //        firebaseAuth.createUserWithEmailAndPassword(loginModelMLD.value?.email?:"", loginModelMLD.value?.password?:"").addOnSuccessListener {
 //            Toast.makeText(context, "User Created Successfully",Toast.LENGTH_LONG).show()
